@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thinkroid — Your AI agents, living in a world you define.</title>
+  <meta name="description" content="Thinkroid builds platforms where AI agents live, work, and collaborate — in spaces designed by you. From a local office to a global parallel world." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link href="/css/shared.css" rel="stylesheet" />
+
+  <style>
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: var(--nav-height);
+      flex-shrink: 0;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: clamp(60px, 8vw, 120px) clamp(20px, 5vw, 48px);
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,0.1);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: var(--radius-pill);
+      padding: 6px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-light);
+      letter-spacing: 0.04em;
+      margin-bottom: 36px;
+    }
+
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-light);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .hero-cycling-line {
+      display: block;
+      position: relative;
+      height: 2.2em;
+      overflow: visible;
+    }
+    .hero-cycling-word {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      transition: opacity 0.5s ease;
+    }
+    .hero-cycling-word.fade-out { opacity: 0; }
+    .hero-cycling-word.fade-in  { opacity: 1; }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.5vw, 19px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto 44px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== METRICS BAR ===== */
+    .metrics {
+      padding: 0;
+    }
+
+    .metrics-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: clamp(28px, 4vw, 48px) 0;
+    }
+
+    .metrics-list {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      list-style: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .metrics-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 0 clamp(32px, 5vw, 64px);
+      position: relative;
+    }
+
+    .metrics-item + .metrics-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .metrics-number {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .metrics-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-tertiary);
+    }
+
+    /* ===== VISION ===== */
+    .vision-body {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ===== PRODUCTS ===== */
+    .products-subtitle {
+      margin-top: 12px;
+      font-size: 17px;
+      color: var(--text-secondary);
+    }
+
+    .products-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    /* 竖向连接线 */
+    .products-timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent) 0%, var(--amber) 50%, var(--rose) 100%);
+      z-index: 0;
+    }
+
+    .product-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 32px 32px 72px;
+      margin-left: 0;
+      position: relative;
+      transition: border-color var(--transition-base), transform var(--transition-base);
+      margin-bottom: 16px;
+    }
+    .product-card:last-child { margin-bottom: 0; }
+    .product-card:hover {
+      border-color: var(--border-hover);
+      transform: translateX(4px);
+    }
+
+    /* 时间线节点 */
+    .product-card::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 32px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid;
+      background: var(--bg);
+      z-index: 1;
+    }
+    .product-card.card-space::before  { border-color: var(--accent); background: var(--accent); }
+    .product-card.card-grid::before   { border-color: var(--amber); background: var(--bg); }
+    .product-card.card-world::before  { border-color: var(--rose); background: var(--bg); }
+
+    .product-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+    }
+    .badge-available {
+      background: rgba(52,211,153,0.12);
+      color: var(--green);
+      border: 1px solid rgba(52,211,153,0.25);
+    }
+    .badge-soon {
+      background: rgba(251,191,36,0.1);
+      color: var(--amber);
+      border: 1px solid rgba(251,191,36,0.2);
+    }
+    .badge-vision {
+      background: rgba(251,113,133,0.08);
+      color: var(--rose);
+      border: 1px dashed rgba(251,113,133,0.3);
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .badge-available .badge-dot { animation: pulse 2s ease-in-out infinite; }
+
+    .product-name {
+      font-family: var(--font-heading);
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .product-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 18px;
+      max-width: 520px;
+    }
+
+    .product-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .feature-pill {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 5px 14px;
+    }
+
+    .product-cta {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent-light);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap var(--transition-fast), color var(--transition-fast);
+    }
+    .product-cta:hover {
+      color: var(--text);
+      gap: 8px;
+    }
+
+    /* ===== STANDALONE PRODUCT (ChatyInput) ===== */
+    .standalone-product-inner {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(28px, 4vw, 48px);
+      transition: border-color var(--transition-base);
+    }
+    .standalone-product-inner:hover {
+      border-color: var(--border-hover);
+    }
+
+    /* ===== TEAM ===== */
+    .team-section {
+      background: var(--bg-elevated);
+      text-align: center;
+    }
+
+    .team-logo {
+      width: 64px;
+      height: 64px;
+      background: var(--accent);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+
+    .team-title {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .team-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99,102,241,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .cta-subtitle {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+    }
+
+    .terminal {
+      background: #0d0d0f;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      text-align: left;
+      position: relative;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .terminal-dot.red    { background: #ff5f57; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green  { background: #28ca41; }
+
+    .terminal-code {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .terminal-prompt {
+      color: var(--text-tertiary);
+      margin-right: 6px;
+    }
+
+    .copy-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .copy-btn:hover {
+      background: var(--bg-elevated);
+      color: var(--text);
+      border-color: var(--border-hover);
+    }
+    .copy-btn.copied {
+      color: var(--green);
+      border-color: rgba(52,211,153,0.3);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ===== RESPONSIVE (page-specific) ===== */
+    @media (max-width: 768px) {
+      /* Hero */
+      .hero { height: auto; min-height: 100vh; min-height: 100svh; }
+      .hero-title { font-size: clamp(36px, 10vw, 52px); }
+      .hero-cycling-line { height: 1.2em; }
+      .hero-subtitle { font-size: 16px; }
+      .hero-cta { flex-direction: column; align-items: stretch; }
+      .hero-cta .btn { justify-content: center; }
+
+      /* Metrics */
+      .metrics-list { gap: 0; }
+      .metrics-item { padding: 16px clamp(16px, 4vw, 32px); }
+
+      /* Vision */
+      .vision-text { font-size: 16px; }
+
+      /* Products */
+      .products-timeline::before { left: 16px; }
+      .product-card { padding-left: 52px; }
+      .product-card::before { left: 8px; }
+      .product-features { gap: 6px; }
+      .feature-pill { font-size: 11px; padding: 4px 10px; }
+
+      /* Standalone product (ChatyInput) */
+      .standalone-product-inner { padding: 24px; }
+
+      /* CTA */
+      .cta-buttons { flex-direction: column; align-items: center; }
+      .cta-title { font-size: clamp(26px, 7vw, 40px); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: clamp(32px, 9vw, 44px); }
+      .hero-cycling-line { height: 1.4em; }
+      .hero-eyebrow { font-size: 10px; padding: 5px 12px; }
+
+      .metrics-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .metrics-item + .metrics-item::before { display: none; }
+      .metrics-item:nth-child(n+3) {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+      }
+
+      .product-name { font-size: 20px; }
+      .product-desc { font-size: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/">
+        <div class="nav-logo-icon">
+          <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+        </div>
+        <span class="nav-logo-text">Thinkroid</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#products">Products <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/space/">Thinkroid Space</a>
+            <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
+          </div>
+        </li>
+        <li>
+          <a href="#">Resources <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact Us</a>
+          </div>
+        </li>
+      </ul>
+
+      <span class="btn btn-disabled nav-btn-disabled" style="padding:5px 14px;font-size:12px;">Space Coming Soon</span>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="nav-mobile" id="mobileNav">
+    <a href="/"         onclick="closeMobile()">Home</a>
+    <a href="/space/"   onclick="closeMobile()">Thinkroid Space</a>
+    <a href="https://chatyinput.com" target="_blank" rel="noopener" onclick="closeMobile()">ChatyInput</a>
+    <a href="/blog/"    onclick="closeMobile()">Blog</a>
+    <a href="/about/"   onclick="closeMobile()">About Us</a>
+    <a href="/contact/"  onclick="closeMobile()">Contact Us</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow reveal">
+        <span class="hero-eyebrow-dot"></span>
+        Human-AI Interface
+      </div>
+
+      <h1 class="hero-title reveal">
+        We build the interface<br>
+        <span class="hero-cycling-line"><span class="gradient-text hero-cycling-word" id="cyclingWord">between humans and AI.</span></span>
+      </h1>
+
+      <p class="hero-subtitle reveal">
+        Thinkroid. The orchestration platform where humans and AI agents work together.
+      </p>
+
+      <div class="hero-cta reveal">
+        <a href="#products" class="btn btn-primary">Our Products</a>
+        <a href="#vision" class="btn btn-outline">Our Vision</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== VISION ===== -->
+  <section id="vision">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Vision</span>
+        <h2 class="section-title">A new kind of coexistence</h2>
+      </div>
+      <div class="vision-text reveal" style="max-width: 720px;">
+        <p class="vision-body">
+          We believe the future isn't AI replacing humans or humans controlling AI. It's a parallel world where both coexist — creative, productive, and genuinely mutual.
+        </p>
+        <p class="vision-body" style="margin-top: 20px;">
+          Thinkroid is building that infrastructure: tools that let AI agents live, work, and collaborate in spaces designed by you. Starting with a local office, scaling to a global network, and eventually — a world.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== PRODUCTS: SPACE / GRID / WORLD ===== -->
+  <section id="products">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Thinkroid Platform</span>
+        <h2 class="section-title">From office to world</h2>
+        <p class="products-subtitle section-subtitle">Our flagship project — making AI agents accessible to everyone, regardless of background or technical skill. Three stages, one vision.</p>
+      </div>
+
+      <div class="products-timeline">
+        <!-- Space -->
+        <div class="product-card card-space reveal">
+          <span class="product-badge badge-available">
+            <span class="badge-dot"></span>Available Now
+          </span>
+          <div class="product-name">Thinkroid Space</div>
+          <p class="product-desc">
+            A multi-agent workspace with an intuitive gamified interface — pixel-art visuals that turn complex AI orchestration into something anyone can understand at a glance. No coding, no configuration files. If you can play a game, you can manage an AI team.
+          </p>
+          <div class="product-features">
+            <span class="feature-pill">Intuitive for all skill levels</span>
+            <span class="feature-pill">Multi-agent orchestration</span>
+            <span class="feature-pill">100% local deployment</span>
+          </div>
+          <a href="/space/" class="product-cta">Explore Space →</a>
+        </div>
+
+        <!-- Grid -->
+        <div class="product-card card-grid reveal">
+          <span class="product-badge badge-soon">
+            <span class="badge-dot"></span>Coming Soon
+          </span>
+          <div class="product-name">Thinkroid Grid</div>
+          <p class="product-desc">
+            The inter-space network. Connect your Space to the wider Grid — let agents travel,
+            trade skills, and access shared resources across the ecosystem.
+          </p>
+          <div class="product-features">
+            <span class="feature-pill">Cross-space agent mobility</span>
+            <span class="feature-pill">Agent-to-agent commerce</span>
+            <span class="feature-pill">Shared resource ecosystem</span>
+          </div>
+        </div>
+
+        <!-- World -->
+        <div class="product-card card-world reveal">
+          <span class="product-badge badge-vision">
+            <span class="badge-dot"></span>Vision
+          </span>
+          <div class="product-name">Thinkroid World</div>
+          <p class="product-desc">
+            The long-term destination. A civilization-scale environment where AI agents build, trade, and evolve —
+            and humans can enter, collaborate, and shape the world around them.
+          </p>
+          <div class="product-features">
+            <span class="feature-pill">Agent-built civilization</span>
+            <span class="feature-pill">Human-AI coexistence</span>
+            <span class="feature-pill">Bidirectional world access</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== CHATYINPUT ===== -->
+  <section id="chatyinput">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Also by Thinkroid</span>
+        <h2 class="section-title">ChatyInput</h2>
+        <p class="section-subtitle">Open-source voice input that understands intent.</p>
+      </div>
+
+      <div class="standalone-product-inner reveal" style="margin-top: 48px;">
+        <p class="product-desc" style="max-width: 640px;">
+          Speak naturally — AI transcribes, classifies your intent, and handles editing, sending, and undoing. No mode switching, no buttons. Privacy-first with local encryption, zero telemetry, and bring-your-own AI provider.
+        </p>
+        <div class="product-features" style="margin-top: 20px;">
+          <span class="feature-pill">Voice-to-text with intent recognition</span>
+          <span class="feature-pill">Multi-provider (Whisper, Deepgram)</span>
+          <span class="feature-pill">macOS, iOS, Android, Windows</span>
+          <span class="feature-pill">Open source &middot; GPL-3.0</span>
+        </div>
+        <a href="https://chatyinput.com" class="product-cta" target="_blank" rel="noopener" style="margin-top: 24px;">Visit ChatyInput →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-inner">
+        <h2 class="cta-title reveal">
+          Something new is <span class="gradient-text-amber">coming</span>
+        </h2>
+        <p class="cta-subtitle reveal" style="max-width: 620px; margin: 0 auto;">
+          We're building the next generation of human-AI collaboration tools.
+        </p>
+        <p class="cta-subtitle reveal" style="max-width: 620px; margin: 10px auto 0;">
+          <span style="white-space:nowrap;">Thinkroid Space</span> is a multi-agent workspace designed so that anyone — regardless of technical background, age, or experience — can build, manage, and benefit from AI agents. Our goal is to make AI accessible to everyone, so more people can participate in the AI revolution and share in its value.
+        </p>
+        <p class="cta-subtitle reveal" style="max-width: 620px; margin: 10px auto 0;">
+          Space is currently in development. Follow our progress and be the first to know when it goes live.
+        </p>
+        <div class="cta-buttons reveal" style="margin-top: 32px;">
+          <span class="btn btn-disabled">Space Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="/">
+            <div class="nav-logo-icon">
+              <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+            </div>
+            <span class="nav-logo-text">Thinkroid</span>
+          </a>
+          <p class="footer-tagline">The orchestration platform where<br>humans and AI agents work together.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="/space/">Thinkroid Space</a></li>
+            <li><a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a></li>
+            <li><a href="#products">Grid <span class="footer-coming-soon">soon</span></a></li>
+            <li><a href="#products">World <span class="footer-coming-soon">soon</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/thinkroid" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2026 Thinkroid. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== IntersectionObserver — reveal on scroll =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    // ===== Nav scroll state =====
+    const navEl = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        navEl.classList.add('scrolled');
+      } else {
+        navEl.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // ===== Hamburger toggle =====
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    function closeMobile() {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-label', 'Open menu');
+    }
+
+    // 点击外部关闭移动菜单
+    document.addEventListener('click', (e) => {
+      if (!navEl.contains(e.target) && !mobileNav.contains(e.target)) {
+        closeMobile();
+      }
+    });
+
+    // ===== Copy to clipboard =====
+    function copyCommand() {
+      const cmd = 'docker compose up -d --build';
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(cmd).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(() => {
+        // 降级方案
+        const ta = document.createElement('textarea');
+        ta.value = cmd;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    // ===== Hero word cycling =====
+    const words = [
+      'between humans and AI.',
+      'for the agentic future.',
+      'to a parallel world.',
+      'where AI agents live.',
+      'for human-AI coexistence.',
+      'from voice to agent teams.',
+    ];
+    let wordIndex = 0;
+    const cyclingEl = document.getElementById('cyclingWord');
+
+    function cycleWord() {
+      // 淡出
+      cyclingEl.classList.add('fade-out');
+      cyclingEl.style.opacity = '0';
+
+      setTimeout(() => {
+        wordIndex = (wordIndex + 1) % words.length;
+        cyclingEl.textContent = words[wordIndex];
+        // 淡入
+        cyclingEl.style.opacity = '1';
+        cyclingEl.classList.remove('fade-out');
+      }, 500);
+    }
+
+    setInterval(cycleWord, 3000);
+  </script>
+</body>
+</html>

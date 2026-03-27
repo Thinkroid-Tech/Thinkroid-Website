@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Thinkroid</title>
+  <meta name="description" content="Latest updates, technical deep-dives, and product news from the Thinkroid team." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link href="/css/shared.css" rel="stylesheet" />
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+    .hero {
+      min-height: 60vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: calc(64px + 80px) 0 60px;
+    }
+    .hero-label {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-heading); font-size: clamp(36px,6vw,64px);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: clamp(16px,1.3vw,18px); color: var(--text-secondary);
+      max-width: 520px; line-height: 1.7; margin: 0 auto;
+    }
+
+    .blog-empty {
+      text-align: center; padding: 0 0 var(--section-pad);
+      position: relative; z-index: 1;
+    }
+    .blog-empty-text {
+      font-size: 15px; color: var(--text-tertiary); margin-bottom: 24px;
+    }
+
+    footer { margin-top: auto; padding: 0; }
+    .footer-grid { padding: 56px 0 40px; }
+    .footer-brand .nav-logo { margin-bottom: 12px; }
+    .footer-bottom { padding: 20px 0; }
+    .footer-copyright { font-size: 12px; }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: clamp(28px,8vw,44px); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="/">
+        <div class="nav-logo-icon">
+          <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+        </div>
+        <span class="nav-logo-text">Thinkroid</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/#products">Products <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/space/">Thinkroid Space</a>
+            <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
+          </div>
+        </li>
+        <li>
+          <a href="#">Resources <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact Us</a>
+          </div>
+        </li>
+      </ul>
+
+      <span class="btn btn-disabled" style="padding:5px 14px;font-size:12px;">Space Coming Soon</span>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobileNav">
+    <a href="/">Home</a>
+    <a href="/space/">Thinkroid Space</a>
+    <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about/">About Us</a>
+    <a href="/contact/">Contact Us</a>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label">Blog</div>
+      <h1 class="hero-title">Thinkroid Blog</h1>
+      <p class="hero-subtitle">
+        Technical deep-dives, product updates, and behind-the-scenes stories from the Thinkroid team.
+      </p>
+    </div>
+  </section>
+
+  <div class="container blog-empty">
+    <p class="blog-empty-text">No posts yet. Stay tuned.</p>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="/">
+            <div class="nav-logo-icon">
+              <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+            </div>
+            <span class="nav-logo-text">Thinkroid</span>
+          </a>
+          <p class="footer-tagline">The orchestration platform where<br>humans and AI agents work together.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="/space/">Thinkroid Space</a></li>
+            <li><a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a></li>
+            <li><a href="/#products">Grid <span class="footer-coming-soon">soon</span></a></li>
+            <li><a href="/#products">World <span class="footer-coming-soon">soon</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/thinkroid" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Thinkroid. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

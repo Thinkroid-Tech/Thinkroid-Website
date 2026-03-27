@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Thinkroid</title>
+  <meta name="description" content="Learn about Thinkroid — the orchestration platform where humans and AI agents work together." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link href="/css/shared.css" rel="stylesheet" />
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
+
+    /* 覆盖 shared.css 的背景效果为 about 页面特有的渐变 */
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px; pointer-events: none; z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; height: 60vh;
+      background: radial-gradient(ellipse 60% 50% at 30% -20%, rgba(99,102,241,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 40% 40% at 70% -10%, rgba(168,85,247,0.08) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .container { padding: 0 clamp(20px,5vw,60px); }
+
+    .hero {
+      min-height: 80vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: calc(64px + 80px) 0 80px;
+    }
+    .hero-label {
+      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-light);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-heading); font-size: clamp(36px,6vw,64px);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    .hero-body {
+      font-size: clamp(16px,1.3vw,18px); color: var(--text-secondary);
+      max-width: 620px; line-height: 1.8; margin: 0 auto 20px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+
+    /* about 页面按钮使用圆角矩形而非胶囊形 */
+    .btn-outline {
+      display: inline-flex; align-items: center; padding: 10px 24px;
+      background: transparent; color: var(--text-secondary);
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: all 200ms; white-space: nowrap;
+    }
+    .btn-outline:hover { color: var(--text); border-color: var(--border-hover); background: rgba(255,255,255,0.03); transform: none; }
+
+    footer { margin-top: auto; padding: 0; }
+    .footer-grid { padding: 56px 0 40px; }
+    .footer-brand .nav-logo { margin-bottom: 12px; }
+    .footer-bottom { padding: 20px 0; }
+    .footer-copyright { font-size: 12px; }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: clamp(28px,8vw,44px); }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon">
+          <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+        </div>
+        Thinkroid
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="#products">Products <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/space/">Thinkroid Space</a>
+            <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
+          </div>
+        </li>
+        <li>
+          <a href="#">Resources <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="/blog/">Blog</a>
+            <a href="/about/">About Us</a>
+            <a href="/contact/">Contact Us</a>
+          </div>
+        </li>
+      </ul>
+
+      <span class="btn-disabled">Space Coming Soon</span>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-mobile" id="mobileNav">
+    <a href="/">Home</a>
+    <a href="/space/">Thinkroid Space</a>
+    <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
+    <a href="/blog/">Blog</a>
+    <a href="/about/">About Us</a>
+    <a href="/contact/">Contact Us</a>
+  </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label">About Us</div>
+      <h1 class="hero-title">The orchestration platform where humans and AI agents work together.</h1>
+      <p class="hero-body">
+        Thinkroid builds AI harnesses and interfaces that make AI accessible to everyone. We believe anyone — regardless of background, age, or technical skill — should be able to work with AI agents and benefit from the AI era.
+      </p>
+      <p class="hero-body">
+        Our flagship project, Thinkroid Space, uses a gamified pixel-art interface to turn complex multi-agent orchestration into something intuitive. No coding required — if you can play a game, you can manage an AI team.
+      </p>
+      <p class="hero-body">
+        We're a small team based in Vancouver, Canada, building at the intersection of humans and artificial intelligence.
+      </p>
+      <div class="hero-actions">
+        <a href="/" class="btn-outline">Back to Home</a>
+        <a href="/contact/" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="/">
+            <div class="nav-logo-icon">
+              <img src="/assets/logo.png" alt="Thinkroid" width="32" height="32" />
+            </div>
+            <span class="nav-logo-text">Thinkroid</span>
+          </a>
+          <p class="footer-tagline">The orchestration platform where<br>humans and AI agents work together.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="/space/">Thinkroid Space</a></li>
+            <li><a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a></li>
+            <li><a href="/#products">Grid <span class="footer-coming-soon">soon</span></a></li>
+            <li><a href="/#products">World <span class="footer-coming-soon">soon</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Resources</div>
+          <ul class="footer-links">
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="https://github.com/thinkroid" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">&copy; 2026 Thinkroid. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
