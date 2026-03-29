@@ -186,6 +186,23 @@
       color: var(--text-tertiary);
     }
 
+    /* ===== PRODUCTS CTA ===== */
+    .products-cta-box {
+      margin-top: 48px;
+      text-align: center;
+      padding: 32px;
+      background: rgba(52,211,153,0.05);
+      border: 1px solid rgba(52,211,153,0.15);
+      border-radius: var(--radius-lg, 12px);
+    }
+
+    .products-cta-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+
     /* ===== VISION ===== */
     .vision-body {
       font-size: 17px;
@@ -657,8 +674,8 @@
       <div class="products-timeline">
         <!-- Space -->
         <div class="product-card card-space reveal">
-          <span class="product-badge badge-available">
-            <span class="badge-dot"></span>Available Now
+          <span class="product-badge badge-soon">
+            <span class="badge-dot"></span>Coming Soon
           </span>
           <div class="product-name">Thinkroid Space</div>
           <p class="product-desc">
@@ -705,6 +722,13 @@
             <span class="feature-pill">Bidirectional world access</span>
           </div>
         </div>
+      </div>
+
+      <div class="products-cta-box reveal">
+        <p class="products-cta-text">
+          Curious about what we're building? Check out the full feature breakdown for Thinkroid Space — gamified office, multi-agent orchestration, persistent memory, governance, and the built-in Athena AI assistant.
+        </p>
+        <a href="/space/" class="btn btn-primary">Learn More About Space</a>
       </div>
 
     </div>

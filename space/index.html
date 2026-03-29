@@ -356,6 +356,126 @@
       line-height: 1.7;
     }
 
+    /* ===== ATHENA SHOWCASE ===== */
+    .athena-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .athena-showcase-text {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 16px;
+      margin: 16px 0 24px;
+    }
+
+    .athena-showcase-text kbd {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    .athena-feature-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .athena-feature-list li {
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-size: 14px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .athena-feature-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .athena-feature-list li strong {
+      color: var(--text-primary);
+    }
+
+    /* 模拟聊天窗口 */
+    .athena-mock-chat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .athena-mock-header {
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .athena-mock-bubble {
+      margin: 10px 12px;
+      padding: 8px 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 85%;
+    }
+
+    .athena-mock-bubble.user {
+      margin-left: auto;
+      background: rgba(52,211,153,0.15);
+      color: var(--green);
+      text-align: right;
+    }
+
+    .athena-mock-bubble table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .athena-mock-bubble th,
+    .athena-mock-bubble td {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 4px 8px;
+      text-align: left;
+    }
+
+    .athena-mock-bubble th {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-primary);
+    }
+
+    .athena-mock-input {
+      padding: 10px 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted, #555);
+      font-size: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .athena-showcase {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
     /* ===== USE CASES ===== */
     .usecases-grid {
       display: grid;
@@ -936,6 +1056,45 @@
           <div class="feature-icon icon-rose">⚡</div>
           <h3 class="feature-title">Any LLM Support</h3>
           <p class="feature-desc">Bring your own API key. Works with Claude, GPT-4, Gemini, Llama 3, Mistral, DeepSeek, and any OpenAI-compatible API including local models via Ollama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== ATHENA ===== -->
+  <section id="athena">
+    <div class="container">
+      <div class="athena-showcase reveal">
+        <div class="athena-showcase-content">
+          <span class="section-label">Built-in AI Assistant</span>
+          <h2 class="section-title" style="text-align:left">Athena — Your AI Guide</h2>
+          <p class="athena-showcase-text">A system-level assistant that lives inside your workspace. Press <kbd>Cmd+/</kbd> to summon her from any screen.</p>
+          <ul class="athena-feature-list">
+            <li><strong>Context-Aware</strong> — Knows which panel you're viewing and adapts her answers accordingly</li>
+            <li><strong>Live System Access</strong> — Queries agents, tasks, settings, and agent memories in real time</li>
+            <li><strong>Inline Approvals</strong> — Create tasks, send messages, edit files, and run commands with approve/deny buttons right in the chat</li>
+            <li><strong>4 Permission Modes</strong> — Plan (read-only), Ask (manual approval), Auto Edit (files auto-approved), Full Auto (everything auto)</li>
+            <li><strong>Rich Markdown</strong> — Tables, syntax-highlighted code blocks, and formatted output rendered natively</li>
+            <li><strong>Configurable</strong> — Custom prompts, model selection, per-tool approval modes, and conversation compaction</li>
+          </ul>
+        </div>
+        <div class="athena-showcase-visual">
+          <div class="athena-mock-chat">
+            <div class="athena-mock-header">🏛 Athena</div>
+            <div class="athena-mock-bubble">Hi! I'm Athena. Ask me anything about your office, agents, or features!</div>
+            <div class="athena-mock-bubble user">Show all agents in a table</div>
+            <div class="athena-mock-bubble">
+              <table>
+                <tr><th>Agent</th><th>Role</th><th>Status</th></tr>
+                <tr><td>Alice</td><td>Engineer</td><td>Working</td></tr>
+                <tr><td>Bob</td><td>Developer</td><td>Idle</td></tr>
+                <tr><td>Carol</td><td>QA</td><td>Idle</td></tr>
+              </table>
+            </div>
+            <div class="athena-mock-input"><span>Ask Athena anything...</span></div>
+          </div>
         </div>
       </div>
     </div>
