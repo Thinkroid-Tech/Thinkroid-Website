@@ -18,7 +18,10 @@
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link href="/css/shared.css" rel="stylesheet" />
   <script type="application/ld+json">
   {
@@ -27,6 +30,17 @@
     "name": "Thinkroid Space Documentation",
     "url": "https://www.thinkroid.com/space/docs/",
     "description": "Documentation for Thinkroid Space — guides, API reference, and tutorials."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.thinkroid.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Space", "item": "https://www.thinkroid.com/space/"},
+      {"@type": "ListItem", "position": 3, "name": "Documentation", "item": "https://www.thinkroid.com/space/docs/"}
+    ]
   }
   </script>
   <style>
@@ -80,6 +94,7 @@
 </head>
 <body>
 
+  <header>
   <nav id="nav">
     <div class="nav-inner">
       <a class="nav-logo" href="/space/">
@@ -108,7 +123,9 @@
     <a href="/space/">Home</a>
     <a href="/space/docs/" onclick="closeMobile()">Docs</a>
   </div>
+  </header>
 
+  <main>
   <section class="hero">
     <div class="container">
       <div class="hero-label">Documentation</div>
@@ -126,6 +143,8 @@
   <div class="container docs-empty">
     <p class="docs-empty-text">Documentation is being written. Stay tuned.</p>
   </div>
+
+  </main>
 
   <footer>
     <div class="container">

@@ -4,10 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 — Thinkroid</title>
+  <meta name="description" content="Page not found. The page you're looking for doesn't exist or has been moved." />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="Page Not Found — Thinkroid" />
+  <meta property="og:description" content="The page you're looking for doesn't exist or has been moved." />
+  <meta property="og:url" content="https://www.thinkroid.com/404" />
+  <meta property="og:type" content="website" />
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link href="/css/shared.css" rel="stylesheet" />
   <style>
     body { min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
@@ -36,6 +45,7 @@
 </head>
 <body>
 
+  <header>
   <nav id="nav">
     <div class="nav-inner">
       <a class="nav-logo" href="/">
@@ -76,13 +86,17 @@
     <a href="/about/">About Us</a>
     <a href="/contact/">Contact Us</a>
   </div>
+  </header>
 
+  <main>
   <section class="hero">
     <div class="hero-code">404</div>
     <h1 class="hero-title">Page not found</h1>
     <p class="hero-body">The page you're looking for doesn't exist or has been moved.</p>
     <a href="/" class="btn btn-primary">Back to Home</a>
   </section>
+
+  </main>
 
   <footer>
     <div class="container">
