@@ -356,6 +356,25 @@
       line-height: 1.7;
     }
 
+    .feature-list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .feature-list li {
+      list-style: disc;
+    }
+    .feature-list code {
+      font-family: var(--font-mono, monospace);
+      font-size: 12px;
+      background: rgba(99,102,241,0.12);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: var(--text);
+    }
+
     /* ===== ATHENA SHOWCASE ===== */
     .athena-showcase {
       display: grid;
@@ -1071,6 +1090,11 @@
           <div class="feature-icon icon-purple">🐳</div>
           <h3 class="feature-title">Docker Container Management</h3>
           <p class="feature-desc">Agents can spin up sandbox containers to run code safely, deploy persistent services like web servers and databases, and manage the full container lifecycle — all isolated per agent with resource limits.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon icon-amber">⏱</div>
+          <h3 class="feature-title">Cron Scheduler</h3>
+          <p class="feature-desc">Schedule recurring tasks, governance checks, and scripts with persistent cron jobs. Agents can create their own schedules, and you manage everything from a unified panel.</p>
         </div>
       </div>
     </div>
