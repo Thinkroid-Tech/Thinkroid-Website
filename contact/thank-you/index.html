@@ -37,7 +37,8 @@
       align-items: center; justify-content: center; text-align: center;
       padding: calc(64px + 80px) 0 80px;
     }
-    .hero-icon { font-size: 48px; margin-bottom: 24px; }
+    .hero-icon { margin-bottom: 24px; color: var(--accent, #6c5ce7); }
+    .hero-icon svg { width: 48px; height: 48px; }
     .hero-title {
       font-family: var(--font-heading); font-size: clamp(32px,5vw,56px);
       font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
@@ -75,7 +76,7 @@
         <li>
           <a href="/#products">Products <svg class="nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="2,3.5 5,6.5 8,3.5"/></svg></a>
           <div class="nav-dropdown">
-            <a href="/space/">Thinkroid Space</a>
+            <a href="https://www.thinkroid.space/">Thinkroid Space</a>
             <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
           </div>
         </li>
@@ -96,7 +97,7 @@
   </nav>
   <div class="nav-mobile" id="mobileNav">
     <a href="/">Home</a>
-    <a href="/space/">Thinkroid Space</a>
+    <a href="https://www.thinkroid.space/">Thinkroid Space</a>
     <a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a>
     <a href="/blog/">Blog</a>
     <a href="/about/">About Us</a>
@@ -107,7 +108,7 @@
   <main>
   <section class="hero">
     <div class="container">
-      <div class="hero-icon">&#10003;</div>
+      <div class="hero-icon"><i data-lucide="check"></i></div>
       <h1 class="hero-title">Thank you!</h1>
       <p class="hero-body">
         Your message has been sent successfully. We'll get back to you as soon as possible.
@@ -136,7 +137,7 @@
         <div>
           <div class="footer-col-title">Products</div>
           <ul class="footer-links">
-            <li><a href="/space/">Thinkroid Space</a></li>
+            <li><a href="https://www.thinkroid.space/">Thinkroid Space</a></li>
             <li><a href="https://chatyinput.com" target="_blank" rel="noopener">ChatyInput</a></li>
             <li><a href="/#products">Grid <span class="footer-coming-soon">soon</span></a></li>
             <li><a href="/#products">World <span class="footer-coming-soon">soon</span></a></li>
@@ -177,6 +178,8 @@
       }
     });
   </script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a4b72c6f0d0b4e45850e27a5e34031b1"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
